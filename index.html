@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Planner Estelar ✨ | Planificador</title>
+  <meta name="description" content="Planificador académico personalizado con tipografías Chubby y Better Together Spaced, inspirado en diseño celestial con secciones amplias para tus actividades." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
+
+  <!-- Google Fonts: Fredoka (la fuente idéntica del diseño original de Canva), Sniglet, Quicksand, Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800;900&family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700&family=Sniglet:wght@400;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="app-navbar" id="appNavbar">
+    <div class="nav-left">
+      <button class="nav-btn nav-tab active" id="btnNavHome" title="Ir a la portada">
+        <span class="icon">✨</span>
+        <span class="text">Portada "PLANNER"</span>
+      </button>
+      <button class="nav-btn nav-tab" id="btnNavPlanner" title="Ver hoja de materias">
+        <span class="icon">📋</span>
+        <span class="text">Mi Planner (Materias)</span>
+      </button>
+    </div>
+
+    <div class="nav-center">
+      <div class="quick-stats-pill" id="globalStatsPill" title="Progreso de actividades completadas">
+        <span class="stats-star">⭐</span>
+        <span class="stats-text" id="statsText">0 / 25 completadas (0%)</span>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="action-btn" id="btnAddSubject" title="Agregar nueva materia o sección">
+        <span class="icon">➕</span>
+        <span class="label">Nueva Materia</span>
+      </button>
+      <button class="action-btn icon-only" id="btnSoundToggle" title="Activar/Silenciar efectos de sonido">
+        <span id="soundIcon">🔔</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- ========================================== -->
+    <!-- VIEW 1: PAGINA PRINCIPAL ("PLANNER" COVER) -->
+    <!-- ========================================== -->
+    <section class="view-section active" id="viewHome">
+      <div class="cover-wrapper">
+        
+        <!-- Stars & Celestial Decor Layer -->
+        <div class="celestial-sky">
+          <div class="shooting-star s-1"></div>
+          <div class="shooting-star s-2"></div>
+          <div class="shooting-star s-3"></div>
+
+          <!-- Puffy Star top-left (animated) -->
+          <div class="puffy-star star-top-left" aria-hidden="true">
+            <svg viewBox="0 0 100 100" class="star-svg">
+              <path d="M50 8 C52 24 64 36 80 38 C64 44 52 56 50 72 C48 56 36 44 20 38 C36 36 48 24 50 8 Z" fill="#cbb2f9" stroke="#522b82" stroke-width="7" stroke-linejoin="round"/>
+              <ellipse cx="42" cy="28" rx="5" ry="3" fill="#ffffff" transform="rotate(-30 42 28)" />
+            </svg>
+          </div>
+
+          <div class="sparkle-star spark-1" aria-hidden="true">✦</div>
+          <div class="sparkle-star spark-2" aria-hidden="true">✦</div>
+          <div class="sparkle-star spark-3" aria-hidden="true">✦</div>
+          <div class="sparkle-star spark-4" aria-hidden="true">✦</div>
+
+          <!-- Puffy Star top-right (STATIC - NO ANIMATION as requested) -->
+          <div class="puffy-star star-top-right static-star" aria-hidden="true">
+            <svg viewBox="0 0 100 100" class="star-svg">
+              <polygon points="50,15 62,38 88,40 68,58 74,83 50,70 26,83 32,58 12,40 38,38" fill="#d0bbfa" stroke="#522b82" stroke-width="7" stroke-linejoin="round"/>
+              <ellipse cx="43" cy="36" rx="5" ry="3" fill="#ffffff" transform="rotate(-20 43 36)" />
+            </svg>
+          </div>
+
+          <div class="puffy-star star-bottom-left" aria-hidden="true">
+            <svg viewBox="0 0 100 100" class="star-svg">
+              <polygon points="50,15 62,38 88,40 68,58 74,83 50,70 26,83 32,58 12,40 38,38" fill="#c3a2f7" stroke="#522b82" stroke-width="7" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="puffy-star star-bottom-right" aria-hidden="true">
+            <svg viewBox="0 0 100 100" class="star-svg">
+              <polygon points="50,15 62,38 88,40 68,58 74,83 50,70 26,83 32,58 12,40 38,38" fill="#d8c5fc" stroke="#522b82" stroke-width="7" stroke-linejoin="round"/>
+              <ellipse cx="44" cy="34" rx="4" ry="2.5" fill="#ffffff" transform="rotate(-25 44 34)" />
+            </svg>
+          </div>
+
+          <!-- Scattered twinkling dots -->
+          <span class="twinkle-dot d-1"></span>
+          <span class="twinkle-dot d-2"></span>
+          <span class="twinkle-dot d-3"></span>
+          <span class="twinkle-dot d-4"></span>
+          <span class="twinkle-dot d-5"></span>
+          <span class="twinkle-dot d-6"></span>
+          <span class="twinkle-dot d-7"></span>
+          <span class="twinkle-dot d-8"></span>
+        </div>
+
+        <!-- Banner Content -->
+        <div class="cover-hero-content">
+          
+          <!-- Radiating Rays Around Banner -->
+          <div class="burst-rays left-rays" aria-hidden="true">
+            <span class="ray r1"></span>
+            <span class="ray r2"></span>
+            <span class="ray r3"></span>
+          </div>
+
+          <!-- Puffy Bubble PLANNER Sticker -->
+          <div class="planner-sticker-container" id="plannerSticker">
+            <div class="cloud-diecut-backing">
+              <div class="bubble-word" aria-label="PLANNER">
+                <span class="bubble-letter letter-p" data-char="P">
+                  <span class="letter-body">P</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-l" data-char="L">
+                  <span class="letter-body">L</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-a" data-char="A">
+                  <span class="letter-body">A</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-n1" data-char="N">
+                  <span class="letter-body">N</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-n2" data-char="N">
+                  <span class="letter-body">N</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-e" data-char="E">
+                  <span class="letter-body">E</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+                <span class="bubble-letter letter-r" data-char="R">
+                  <span class="letter-body">R</span>
+                  <span class="shine-pill shine-top"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="burst-rays right-rays" aria-hidden="true">
+            <span class="ray r1"></span>
+            <span class="ray r2"></span>
+            <span class="ray r3"></span>
+          </div>
+
+          <!-- Kawaii Cat Paw Badge -->
+          <div class="paw-badge-container" id="btnPawFun" title="¡Haz click en la patita para una sorpresa!">
+            <div class="paw-badge">
+              <div class="toe toe-1"></div>
+              <div class="toe toe-2"></div>
+              <div class="toe toe-3"></div>
+              <div class="toe toe-4"></div>
+              <div class="palm-pad"></div>
+            </div>
+          </div>
+
+          <!-- Cover Subtitle & Call-to-actions -->
+          <div class="cover-actions">
+            <div class="date-greeting-card">
+              <span class="calendar-icon">🗓️</span>
+              <span id="currentDateDisplay">Cargando fecha...</span>
+            </div>
+
+            <div class="cta-buttons-row">
+              <button class="cta-bubble-btn primary-cta" id="btnOpenPlannerFromHero">
+                <span class="btn-text">🌸 Abrir Mi Planner</span>
+                <span class="btn-sparkle">✨</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Scalloped Cloud Horizon at Bottom -->
+        <div class="bottom-clouds" aria-hidden="true">
+          <svg class="cloud-wave-svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <path d="M0,130 C120,80 220,120 320,90 C420,60 540,110 660,85 C780,60 900,105 1020,80 C1140,55 1260,95 1360,70 C1410,55 1440,65 1440,65 L1440,220 L0,220 Z" fill="#eedfff" opacity="0.5"/>
+            <path d="M0,150 C140,110 260,140 380,120 C500,100 620,135 740,115 C860,95 980,130 1100,110 C1220,90 1340,125 1440,105 L1440,220 L0,220 Z" fill="#f8f1ff" opacity="0.8"/>
+            <path d="M0,175 C160,145 280,170 420,150 C560,130 700,165 840,145 C980,125 1120,160 1260,140 C1360,125 1440,140 1440,140 L1440,220 L0,220 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Quick Subject Highlights on Home Page -->
+      <section class="home-subjects-preview">
+        <h2 class="preview-title">Tus Secciones Académicas</h2>
+        <div class="preview-chips-container" id="homeChipsContainer">
+          <!-- Populated dynamically with subject pills -->
+        </div>
+      </section>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: PLANNER COMPLETO (VISTA DE SECCIONES) -->
+    <!-- ========================================== -->
+    <section class="view-section" id="viewPlanner">
+      <div class="planner-layout-wrapper">
+        
+        <!-- Planner Top Toolbar -->
+        <header class="planner-sheet-header">
+          <div class="sheet-title-row">
+            <h1 class="sheet-main-title">Cuaderno de Actividades</h1>
+            <p class="sheet-subtitle">Organiza tus actividades, temas y fechas por cada materia</p>
+          </div>
+
+          <!-- Subject navigation jump pills -->
+          <div class="subject-jump-pills" id="subjectJumpNav">
+            <!-- Dynamically generated jump pills -->
+          </div>
+        </header>
+
+        <!-- The Planner Canvas / Sheet Container (Spacious Layout) -->
+        <div class="planner-canvas-container" id="plannerCanvas">
+          
+          <!-- Top Decorative Cloud -->
+          <div class="strip-cloud-top" aria-hidden="true">
+            <svg viewBox="0 0 800 80" preserveAspectRatio="none">
+              <path d="M0,0 L800,0 L800,25 C720,55 640,25 560,45 C480,65 400,35 320,55 C240,75 160,35 80,50 C40,58 0,42 0,42 Z" fill="#eedfff" opacity="0.7"/>
+              <path d="M0,0 L800,0 L800,18 C710,42 630,18 530,35 C440,55 360,25 270,42 C170,58 90,25 0,34 Z" fill="#fcf9ff"/>
+            </svg>
+          </div>
+
+          <!-- Subject Cards Container -->
+          <div class="subjects-list" id="subjectsList">
+            <!-- Dynamically rendered subjects with spacious boxes -->
+          </div>
+
+          <!-- Bottom Decorative Cloud -->
+          <div class="strip-cloud-bottom" aria-hidden="true">
+            <svg viewBox="0 0 800 80" preserveAspectRatio="none">
+              <path d="M0,80 L800,80 L800,55 C720,25 640,55 560,35 C480,15 400,45 320,25 C240,5 160,45 80,30 C40,22 0,38 0,38 Z" fill="#eedfff" opacity="0.7"/>
+              <path d="M0,80 L800,80 L800,62 C710,38 630,62 530,45 C440,25 360,55 270,38 C170,22 90,55 0,46 Z" fill="#fcf9ff"/>
+            </svg>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODAL: AGREGAR / EDITAR MATERIA -->
+  <!-- ========================================== -->
+  <div class="modal-backdrop" id="modalSubject">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalSubjectTitle">Nueva Materia</h3>
+        <button class="modal-close-btn" id="btnCloseSubjectModal">&times;</button>
+      </div>
+      <form id="formSubject" class="modal-form">
+        <input type="hidden" id="editSubjectId" value="" />
+        
+        <div class="form-group">
+          <label for="inputSubjectName">Nombre de la Materia:</label>
+          <input type="text" id="inputSubjectName" placeholder="Ej. LITERATURA MODERNA" required maxlength="40" />
+        </div>
+
+        <div class="form-group">
+          <label>Tema de Color Pastel:</label>
+          <div class="color-palette-options" id="colorPaletteOptions">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputInitialRows">Número de filas iniciales:</label>
+          <input type="number" id="inputInitialRows" min="1" max="15" value="5" />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" id="btnCancelSubjectModal">Cancelar</button>
+          <button type="submit" class="btn-save">Guardar Materia ✨</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
